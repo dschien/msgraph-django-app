@@ -61,7 +61,9 @@ def create_event(token, subject, start, end, attendees=None, body=None, timezone
     'end': {
       'dateTime': end,
       'timeZone': timezone
-    }
+    },
+    "isOnlineMeeting": True,
+    "onlineMeetingProvider": "teamsForBusiness"
   }
 
   if attendees:
@@ -90,7 +92,7 @@ def create_event(token, subject, start, end, attendees=None, body=None, timezone
     'Content-Type': 'application/json'
   }
 
-  requests.post('{0}/me/events'.format(graph_url),
+  return requests.post('{0}/me/events'.format(graph_url),
     headers=headers,
     data=json.dumps(new_event))
 # </CreateEventSnippet>

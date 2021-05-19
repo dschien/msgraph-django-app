@@ -14,4 +14,5 @@ urlpatterns = [
   path('calendar', views.calendar, name='calendar'),
   path('callback', views.callback, name='callback'),
   path('calendar/new', views.newevent, name='newevent'),
+  path('calendar/bulk', views.bulkevent, name='bulkevents'),
 ]

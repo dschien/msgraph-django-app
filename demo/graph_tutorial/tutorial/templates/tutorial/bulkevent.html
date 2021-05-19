@@ -1,0 +1,62 @@
+<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+
+<!-- <NewEventSnippet> -->
+{% extends "tutorial/layout.html" %}
+{% block content %}
+    <h1>New bulk event</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Excel File with groups</label>
+            <input type="file"
+                   title="Upload excel file"
+                   name="excel_file"
+                   style="border: 1px solid black; padding: 5px;"
+                   required="required">
+        </div>
+        <label>Subject</label>
+        <input class="form-control" name="ev-subject" type="text">
+        </div>
+        {#  <div class="form-group">#}
+        <label>Duration</label>
+        <input class="form-control" name="ev-duration" type="number"
+               placeholder="Duration in minutes">
+        {#  </div>#}
+        {#  <div class="form-row">#}
+        {#    <div class="col">#}
+        {#      <div class="form-group">#}
+        {#        <label>Start</label>#}
+        {#        <input class="form-control" name="ev-start" type="datetime-local">#}
+        {#      </div>#}
+        {#    </div>#}
+        {#    <div class="col">#}
+        {#      <div class="form-group">#}
+        {#        <label>End</label>#}
+        {#        <input class="form-control" name="ev-end" type="datetime-local">#}
+        {#      </div>#}
+        {#    </div>#}
+        {#  </div>#}
+        <div class="form-group mb-3">
+            <label>Body</label>
+            <textarea class="form-control" name="ev-body" rows="3"></textarea>
+        </div>
+        <input class="btn btn-primary mr-2" type="submit" value="Create"/>
+        <a class="btn btn-secondary" href="/calendar">Cancel</a>
+    </form>
+
+    <div>
+        {% if messages %}
+            <span>Scheduling Results</span>
+            {% for message in messages %}
+                <div class="info alert-success" role="alert">
+                    <p class="mb-3">{{ message.message }}</p>
+                    {% if message.detail %}
+                        <pre class="alert-pre border bg-light p-2"><code>{{ messages.detail }}</code></pre>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}
+<!-- </NewEventSnippet> -->
